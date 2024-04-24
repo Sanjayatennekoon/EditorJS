@@ -9,40 +9,32 @@ const Configuration = () => {
     holder: "editorjs",
     autofocus: true,
 
-    /**
-     * Available Tools list.
-     * Pass Tool's class or Settings object for each Tool you want to use
-     */
-    tools: {
-      // image: {
-      //   class: SimpleImage,
-      //   inlineToolbar: true,
-      // },
+    //Pass Tool's class or Settings object for each Tool you want to use
 
+    tools: {
       header: Header,
+
       image: {
         class: ImageTool,
         config: {
           uploader: {
             async uploadByFile(file) {
               // your own uploading logic here
-              const formData = new FormData();
-              formData.append("file", file);
-
-              const response = await axios.post(
-                `http://localhost:4001/api/uploadImage/create`,
-                formData,
-                {
-                  headers: {
-                    "Content-Type": "multipart/form-data",
-                  },
-                  withCredentials: false,
-                }
-              );
-
-              if (response.data.success === 1) {
-                return response.data;
-              }
+              // const formData = new FormData();
+              // formData.append("file", file);
+              // const response = await axios.post(
+              //   `http://localhost:4001/api/uploadImage/create`,
+              //   formData,
+              //   {
+              //     headers: {
+              //       "Content-Type": "multipart/form-data",
+              //     },
+              //     withCredentials: false,
+              //   }
+              // );
+              // if (response.data.success === 1) {
+              //   return response.data;
+              // }
             },
             async uploadByUrl(url) {
               const response = await axios.post(
